@@ -62,7 +62,7 @@ jobs:
           git clone https://github.com/RainoGong/lede.git ~/package/lean/
 	  cd ..
 
-       - name: Update feeds
+      - name: Update feeds
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
