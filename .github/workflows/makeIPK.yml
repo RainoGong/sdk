@@ -68,9 +68,9 @@ jobs:
           ./scripts/feeds install -a
        
       - name: Compile Package
-	run: |
-	  cd ../../../
-	  ./builder.sh -d ./sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
+        run: |
+          cd ../../../
+          ./builder.sh -d ./sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
 #      - name: Generate configuration file
 #        run: |
 #          rm -f ./.config*
