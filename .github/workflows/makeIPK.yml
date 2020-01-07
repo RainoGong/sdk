@@ -60,7 +60,7 @@ jobs:
           ./download.sh ar71xx-1806
           cd sdk/1806/ar71xx/package/
           git clone https://github.com/RainoGong/lede.git ~/package/lean/
-	  cd ..
+          cd ..
 
       - name: Update feeds
         run: |
