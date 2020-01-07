@@ -62,7 +62,7 @@ jobs:
       - name: Compile Package
         run: |
           cd /home/runner/work/sdk/sdk/
-          ./builder.sh -d ./sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
+          ./builder.sh -d /home/runner/work/sdk/sdk/sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
 #      - name: Generate configuration file
 #        run: |
 #          rm -f ./.config*
