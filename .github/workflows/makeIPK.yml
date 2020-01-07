@@ -60,10 +60,12 @@ jobs:
           ./download.sh ar71xx-1806
           cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/package/
           git clone https://github.com/RainoGong/lede.git ~/package/lean/
+          cp -r /home/runner/package/lean/ /home/runner/work/sdk/sdk/sdk/1806/ar71xx/package/
           cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/
 
       - name: Update feeds
         run: |
+          cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/
           ./scripts/feeds update -a
           ./scripts/feeds install -a
        
