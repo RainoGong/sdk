@@ -39,12 +39,10 @@ jobs:
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
           sudo -E apt-get update
-          sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compile 
-	  sudo -E apt-get update 
-
-	  sudo -E apt-get -y install asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl1.0-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev 
-	  
-	  sudo -E apt-get -y autoremove --purge
+          sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
+          sudo -E apt-get -y update && sudo -E apt-get -y upgrade
+          sudo -E apt-get -y install asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl1.0-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev
+          sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
 
           # sudo mkdir -p -m 777 /mnt/openwrt/bin /mnt/openwrt/build_dir/host /mnt/openwrt/build_dir/hostpkg /mnt/openwrt/dl /mnt/openwrt/feeds /mnt/openwrt/staging_dir
@@ -58,21 +56,21 @@ jobs:
           df -h
 
       - name: Install ar750 sdk
-      	run: |
-	  ./download.sh ar71xx-1806
-	  cd sdk/1806/ar71xx/package/
-	  git clone https://github.com/RainoGong/lede.git ~/package/lean/
+	run: |
+          ./download.sh ar71xx-1806
+          cd sdk/1806/ar71xx/package/
+          git clone https://github.com/RainoGong/lede.git ~/package/lean/
 	  cd ..
 
-      - name: Update feeds
+       - name: Update feeds
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
        
       - name: Compile Package
-	      run: |
-	        cd ../../../
-	        ./builder.sh -d ./sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
+	run: |
+	  cd ../../../
+	  ./builder.sh -d ./sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
 #      - name: Generate configuration file
 #        run: |
 #          rm -f ./.config*
