@@ -58,9 +58,9 @@ jobs:
       - name: Install ar750 sdk
         run: |
           ./download.sh ar71xx-1806
-          cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/
+          cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/package/
           git clone https://github.com/RainoGong/lede.git ~/package/lean/
-          cd ..
+          cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/
 
       - name: Update feeds
         run: |
@@ -69,7 +69,7 @@ jobs:
        
       - name: Compile Package
         run: |
-          cd ../../../
+          cd /home/runner/work/sdk/sdk/
           ./builder.sh -d ./sdk/1806/ar71xx/package/lean/luci-app-ssr-plus/ -t ar71xx-1806
 #      - name: Generate configuration file
 #        run: |
