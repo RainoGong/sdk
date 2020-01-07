@@ -58,7 +58,7 @@ jobs:
       - name: Install ar750 sdk
         run: |
           ./download.sh ar71xx-1806
-          cd sdk/1806/ar71xx/package/
+          cd /home/runner/work/sdk/sdk/sdk/1806/ar71xx/
           git clone https://github.com/RainoGong/lede.git ~/package/lean/
           cd ..
 
